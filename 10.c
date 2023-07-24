@@ -4,26 +4,30 @@
 #include "Driver\DrvUART.h"
 #include "Driver\DrvSYS.h"
 
-void Init_LED() // Initialize GPIO pins
+
+void EINT1Callback(void) 
 {
-   DrvGPIO_Open(E_GPC, 12, E_IO_OUTPUT); // GPC12 pin set to output mode
-   DrvGPIO_SetBit(E_GPC, 12);   // output Hi to turn off LED
+  DrvGPIO_ClrBit(E_GPC,12); 
+	DrvSYS_Delay(100000);	    
+	DrvGPIO_SetBit(E_GPC,12); 
+	DrvSYS_Delay(100000);	    	
 }
+
 int main (void)
 {
-   UNLOCKREG(); // unlock register for programming
-   DrvSYS_Open(48000000);// set to run at 48MHz 
-   // 12MHz crystal input, PLL output 48MHz
-   LOCKREG();   // lock register  from programming
+	UNLOCKREG();
+	DrvSYS_SetOscCtrl(E_SYS_XTL12M, 1);
+	DrvSYS_Delay(5000);                
+	DrvSYS_SelectHCLKSource(0);         
+	LOCKREG();
 
-   Init_LED(); // Initialize LEDs (four on-board LEDs)
+	DrvGPIO_Open(E_GPC, 12, E_IO_OUTPUT);
+   
+	//Interrupt (Don't change code here)
+  DrvGPIO_Open(E_GPC, 15, E_IO_INPUT);       
+  DrvGPIO_EnableEINT1(E_IO_BOTH_EDGE, E_MODE_EDGE, EINT1Callback);
 
-   while (1) //   forever loop to keep flashing four LEDs one at a time
-   {
-        DrvGPIO_ClrBit(E_GPC, 12); // output Low  turn on LED
-        DrvSYS_Delay(30000);	 // delay 
-        DrvGPIO_SetBit(E_GPC, 12); // output Hi  turn off LED
-        DrvSYS_Delay(300000);  // delay
-   }
-
+  while(1)
+	{
+  }
 }
