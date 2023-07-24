@@ -24,7 +24,7 @@ int main (void)
 	DrvGPIO_Open(E_GPC, 14, E_IO_OUTPUT);
    
 	//Interrupt (Don't change code here)
-  DrvGPIO_Open(E_GPC, 14, E_IO_INPUT);       
+  DrvGPIO_Open(E_GPC, 15, E_IO_INPUT);       
   DrvGPIO_EnableEINT1(E_IO_BOTH_EDGE, E_MODE_EDGE, EINT1Callback);
 
   while(1)
