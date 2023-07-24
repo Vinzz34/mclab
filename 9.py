@@ -25,5 +25,5 @@ try:
     GPIO.output(led_pin, GPIO.LOW)
     time.sleep(1) # Wait for 1 second
 except KeyboardInterrupt:
-# Clean up GPIO configuration on keyboard interrupt (Ctrl+C)
-GPIO.cleanup() 
+  # Clean up GPIO configuration on keyboard interrupt (Ctrl+C)
+  GPIO.cleanup() 
