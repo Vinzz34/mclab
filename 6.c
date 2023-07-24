@@ -5,12 +5,12 @@
 #include "NUC1xx-LB_002\LCD_Driver.h" 
 int main(void) 
 { 
-UNLOCKREG(); 
-DrvSYS_Open(48000000); // set to 48MHz 
-LOCKREG(); 
-Initial_panel(); 
-clr_all_panel(); 
-print_lcd(0, "welcome"); 
-print_lcd(1, "to "); 
-print_lcd(2, "MSRIT"); 
+  UNLOCKREG();   
+  DrvSYS_Open(48000000); // set to 48MHz 
+  LOCKREG(); 
+  Initial_panel(); 
+  clr_all_panel(); 
+  print_lcd(0, "welcome"); 
+  print_lcd(1, "to "); 
+  print_lcd(2, "MSRIT"); 
 } 
