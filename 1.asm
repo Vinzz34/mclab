@@ -1,13 +1,15 @@
-PRESERVE8
-	THUMB
-	AREA |.text|,CODE, READONLY
-EXPORT __main
-__main
-        LDRS R1,=0x00000200
-        LDRS R2,=0x00000400
-        LDMIA R1!, {R3,R4}
-        MOV SP,  R2
-       	PUSH(R3,R4)
-       	POP(R6,R7)
- STOP B STOP
-END
+PRESERVE8  
+	THUMB          
+	AREA    |.text|, CODE, READONLY			   
+EXPORT __main			 
+
+__main                 
+        LDR r3,=0x20000100
+	LDR r0,=0x20000050
+	LDMIA r3!,{r1,r2}
+			  
+	mov SP,r0
+	PUSH {r1,r2}
+	POP {r4,r5}
+stop B stop			   
+	END
