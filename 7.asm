@@ -5,12 +5,12 @@ PRESERVE8
 
 
 
-	__main
-	 LDR R0, =0
-	 CMP R0, #3 ; Compare input to maximum valid choice
-	 BHI default_case ; Branch to default case if higher than 3 
-	 MOVS R2, #4 ; Multiply branch table offset by 4 
-	 MULS R0, R2, R0 ; (size of each entry) 
+__main
+	LDR R0, =0
+	CMP R0, #3 ; Compare input to maximum valid choice
+	BHI default_case ; Branch to default case if higher than 3 
+	MOVS R2, #4 ; Multiply branch table offset by 4 
+	MULS R0, R2, R0 ; (size of each entry) 
         LDR R1, =BranchTable ; Get base address of branch table(0x284)
         LDR R2,[R1,R0] ; Get the actual branch destination 
         BX R2 ; Branch to destination 
@@ -31,4 +31,4 @@ stop3 B stop3 ; Instructions for case ‘2’
 Dest3 ldr r0, =40  
 stop4 B stop4 ; Instructions for case ‘3’ 
 	 
-	 END
+END
