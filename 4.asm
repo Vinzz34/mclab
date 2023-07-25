@@ -7,7 +7,7 @@
 	EXTERN  func
 
 __main
-	LDR r0,=0x10;
+	LDR R0,=0x10;
  	BL func
 stop B stop
   END
@@ -39,7 +39,7 @@ func
 	EXPORT func2
 	
 func2
-	MOVS r2,#09
+	MOVS R2,#09
 	adds R1, R1, R2
 	BX LR
 	   END
