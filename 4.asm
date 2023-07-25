@@ -22,12 +22,12 @@ PRESERVE8
 	EXTERN func2
 	
 func
-	push{LR}
+	PUSH{LR}
 	LDR R3,=0x2
 	MULS R0, R3, R0
-	movs R1, R0
+	MOVS R1, R0
 	BL func2
-	pop{PC}
+	POP{PC}
     	END
 
 
@@ -40,6 +40,6 @@ func
 	
 func2
 	MOVS R2,#09
-	adds R1, R1, R2
+	ADDS R1, R1, R2
 	BX LR
 	   END
